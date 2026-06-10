@@ -1,0 +1,36 @@
+/* GorditOS — Radii & Shadows
+   Generous, friendly rounding. Soft, warm-tinted shadows (never cold/gray).
+   Surfaces feel like rounded paper cards resting on cream. */
+
+:root {
+  /* Corner radii */
+  --radius-xs:   6px;
+  --radius-sm:   10px;
+  --radius-md:   14px;   /* default control / chip */
+  --radius-lg:   20px;   /* cards */
+  --radius-xl:   28px;   /* sheets, big tiles */
+  --radius-2xl:  36px;   /* hero panels */
+  --radius-pill: 999px;  /* buttons, tags, Gordi bubbles */
+
+  /* Shadows — warm brown-tinted, soft & diffuse */
+  --shadow-xs:  0 1px 2px rgba(74, 56, 30, 0.06);
+  --shadow-sm:  0 2px 6px rgba(74, 56, 30, 0.08);
+  --shadow-md:  0 6px 16px rgba(74, 56, 30, 0.10);
+  --shadow-lg:  0 14px 30px rgba(74, 56, 30, 0.12);
+  --shadow-xl:  0 24px 48px rgba(74, 56, 30, 0.16);
+
+  /* Brand glow — used on celebration / active states */
+  --shadow-brand: 0 8px 20px rgba(47, 158, 102, 0.28);
+  --shadow-apricot: 0 8px 20px rgba(242, 162, 78, 0.30);
+
+  /* Focus ring (kind, not aggressive) */
+  --focus-ring: 0 0 0 3px rgba(47, 158, 102, 0.35);
+
+  /* Motion — easings & durations. Soft, springy, never abrupt. */
+  --ease-soft:   cubic-bezier(0.34, 1.56, 0.64, 1);   /* @kind other */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);      /* @kind other */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);      /* @kind other */
+  --dur-fast:   140ms;  /* @kind other */
+  --dur-base:   240ms;  /* @kind other */
+  --dur-slow:   420ms;  /* @kind other */
+}

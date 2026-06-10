@@ -1,0 +1,203 @@
+/* GorditOS — component styles (shipped to consumers via styles.css).
+   Components reference these gds-* classes; states (hover/active/focus)
+   live here so JSX stays declarative. */
+
+/* ============ Button ============ */
+.gds-btn{
+  font-family:var(--font-display);
+  font-weight:700;
+  border:none;
+  border-radius:var(--radius-pill);
+  cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  text-align:center;line-height:1;
+  transition:transform var(--dur-fast) var(--ease-soft),
+             background var(--dur-fast) var(--ease-out),
+             box-shadow var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color:transparent;
+}
+.gds-btn:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+.gds-btn:active{transform:scale(0.96);}
+.gds-btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+
+.gds-btn--sm{font-size:14px;padding:9px 16px;min-height:38px;}
+.gds-btn--md{font-size:16px;padding:13px 22px;min-height:var(--tap-target);}
+.gds-btn--lg{font-size:18px;padding:16px 28px;min-height:54px;}
+.gds-btn--block{display:flex;width:100%;}
+
+.gds-btn--primary{background:var(--brand-primary);color:var(--text-on-brand);box-shadow:var(--shadow-brand);}
+.gds-btn--primary:hover:not(:disabled){background:var(--brand-primary-hover);}
+.gds-btn--secondary{background:var(--brand-secondary);color:var(--ink-900);box-shadow:var(--shadow-apricot);}
+.gds-btn--secondary:hover:not(:disabled){background:var(--apricot-600);}
+.gds-btn--soft{background:var(--green-50);color:var(--green-700);}
+.gds-btn--soft:hover:not(:disabled){background:var(--green-100);}
+.gds-btn--ghost{background:transparent;color:var(--ink-700);}
+.gds-btn--ghost:hover:not(:disabled){background:var(--sand-200);}
+.gds-btn--outline{background:transparent;color:var(--green-700);box-shadow:inset 0 0 0 2px var(--green-200);}
+.gds-btn--outline:hover:not(:disabled){background:var(--green-50);}
+
+/* ============ IconButton ============ */
+.gds-iconbtn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:var(--tap-target);height:var(--tap-target);
+  border:none;border-radius:var(--radius-pill);cursor:pointer;
+  background:var(--surface-card);color:var(--ink-700);
+  box-shadow:var(--shadow-sm);
+  transition:transform var(--dur-fast) var(--ease-soft),background var(--dur-fast);
+  -webkit-tap-highlight-color:transparent;
+}
+.gds-iconbtn:hover{background:var(--sand-100);}
+.gds-iconbtn:active{transform:scale(0.92);}
+.gds-iconbtn:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+.gds-iconbtn--bare{box-shadow:none;background:transparent;}
+
+/* ============ Badge / Chip ============ */
+.gds-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-body);font-weight:700;font-size:12px;
+  padding:4px 10px;border-radius:var(--radius-pill);line-height:1.3;
+}
+.gds-badge--green{background:var(--green-100);color:var(--green-700);}
+.gds-badge--apricot{background:var(--apricot-100);color:var(--apricot-700);}
+.gds-badge--sky{background:var(--sky-100);color:var(--sky-700);}
+.gds-badge--berry{background:var(--berry-100);color:var(--berry-600);}
+.gds-badge--neutral{background:var(--sand-200);color:var(--ink-700);}
+.gds-badge--mono{font-family:var(--font-mono);font-weight:500;letter-spacing:var(--ls-label);}
+
+.gds-chip{
+  font-family:var(--font-body);font-weight:600;font-size:14px;
+  padding:9px 16px;border-radius:var(--radius-pill);cursor:pointer;
+  background:var(--surface-card);color:var(--ink-700);
+  border:1.5px solid var(--border-soft);
+  transition:all var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color:transparent;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.gds-chip:hover{border-color:var(--green-300);}
+.gds-chip[aria-pressed="true"]{background:var(--green-500);color:#fff;border-color:var(--green-500);}
+
+/* ============ Card ============ */
+.gds-card{
+  background:var(--surface-card);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-sm);
+  padding:var(--space-6);
+}
+.gds-card--raised{box-shadow:var(--shadow-md);}
+.gds-card--flat{box-shadow:none;border:1.5px solid var(--border-soft);}
+.gds-card--tint{background:var(--green-50);}
+.gds-card--interactive{cursor:pointer;transition:transform var(--dur-base) var(--ease-soft),box-shadow var(--dur-base) var(--ease-out);}
+.gds-card--interactive:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+
+/* ============ Avatar ============ */
+.gds-avatar{
+  border-radius:var(--radius-pill);overflow:hidden;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--green-100);color:var(--green-700);
+  font-family:var(--font-display);font-weight:700;
+}
+
+/* ============ Input ============ */
+.gds-field{display:flex;flex-direction:column;gap:6px;}
+.gds-label{font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--ink-700);}
+.gds-input{
+  font-family:var(--font-body);font-size:16px;color:var(--ink-900);
+  background:var(--surface-card);
+  border:1.5px solid var(--border-soft);
+  border-radius:var(--radius-md);
+  padding:12px 14px;width:100%;outline:none;
+  transition:border-color var(--dur-fast),box-shadow var(--dur-fast);
+}
+.gds-input::placeholder{color:var(--ink-400);}
+.gds-input:focus{border-color:var(--green-400);box-shadow:var(--focus-ring);}
+.gds-hint{font-family:var(--font-body);font-size:12px;color:var(--ink-500);}
+
+/* ============ Switch ============ */
+.gds-switch{position:relative;display:inline-flex;width:52px;height:30px;flex:none;cursor:pointer;}
+.gds-switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;}
+.gds-switch .track{
+  position:absolute;inset:0;border-radius:var(--radius-pill);
+  background:var(--sand-300);transition:background var(--dur-base) var(--ease-out);
+}
+.gds-switch .thumb{
+  position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:var(--radius-pill);
+  background:#fff;box-shadow:var(--shadow-sm);
+  transition:transform var(--dur-base) var(--ease-soft);
+}
+.gds-switch input:checked ~ .track{background:var(--green-500);}
+.gds-switch input:checked ~ .thumb{transform:translateX(22px);}
+.gds-switch input:focus-visible ~ .track{box-shadow:var(--focus-ring);}
+
+/* ============ Segmented control ============ */
+.gds-seg{display:inline-flex;background:var(--sand-200);border-radius:var(--radius-pill);padding:4px;gap:2px;}
+.gds-seg button{
+  font-family:var(--font-display);font-weight:600;font-size:14px;
+  border:none;background:transparent;color:var(--ink-500);cursor:pointer;
+  padding:8px 16px;border-radius:var(--radius-pill);min-height:38px;
+  transition:all var(--dur-fast) var(--ease-out);
+}
+.gds-seg button[aria-selected="true"]{background:var(--surface-card);color:var(--green-700);box-shadow:var(--shadow-sm);}
+
+/* ============ Gordi speech bubble ============ */
+.gds-gordi{display:flex;align-items:flex-end;gap:10px;}
+.gds-gordi img,.gds-gordi .av{width:48px;height:48px;flex:none;}
+.gds-gordi .bubble{
+  background:var(--surface-card);border:1px solid var(--border-soft);
+  border-radius:var(--radius-lg);border-bottom-left-radius:6px;
+  padding:12px 16px;box-shadow:var(--shadow-sm);
+  font-family:var(--font-body);font-weight:600;font-size:15px;color:var(--ink-900);line-height:1.45;
+}
+.gds-gordi--user .bubble{background:var(--green-500);color:#fff;border:none;border-radius:var(--radius-lg);border-bottom-right-radius:6px;}
+
+/* ============ Habit tile (1-tap) ============ */
+.gds-habit{
+  display:flex;align-items:center;gap:14px;width:100%;
+  background:var(--surface-card);border:none;cursor:pointer;
+  border-radius:var(--radius-lg);padding:14px 16px;
+  box-shadow:var(--shadow-sm);text-align:left;
+  transition:transform var(--dur-fast) var(--ease-soft),box-shadow var(--dur-base);
+  -webkit-tap-highlight-color:transparent;
+}
+.gds-habit:active{transform:scale(0.985);}
+.gds-habit__icon{width:46px;height:46px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex:none;font-size:22px;}
+.gds-habit__body{flex:1;min-width:0;}
+.gds-habit__name{font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--ink-900);}
+.gds-habit__meta{font-family:var(--font-body);font-size:13px;color:var(--ink-500);}
+.gds-habit__check{
+  width:34px;height:34px;border-radius:var(--radius-pill);flex:none;
+  border:2.5px solid var(--sand-300);background:transparent;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  transition:all var(--dur-base) var(--ease-soft);
+}
+.gds-habit[data-done="true"]{background:var(--green-50);}
+.gds-habit[data-done="true"] .gds-habit__check{background:var(--green-500);border-color:var(--green-500);transform:scale(1.05);}
+
+/* ============ Progress ring (svg) ============ */
+.gds-ring__track{stroke:var(--sand-200);}
+.gds-ring__value{stroke:var(--green-500);stroke-linecap:round;transition:stroke-dashoffset var(--dur-slow) var(--ease-out);}
+.gds-ring__label{font-family:var(--font-display);font-weight:800;fill:var(--ink-900);}
+.gds-ring__sub{font-family:var(--font-body);font-weight:600;fill:var(--ink-500);}
+
+/* ============ Garden grid ============ */
+.gds-garden{display:grid;gap:7px;}
+.gds-garden__day{
+  aspect-ratio:1;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:15px;
+  background:var(--garden-soil);
+}
+
+/* ============ Bottom nav ============ */
+.gds-bottomnav{
+  display:flex;align-items:stretch;justify-content:space-around;
+  background:var(--surface-card);
+  box-shadow:0 -2px 16px rgba(74,56,30,.08);
+  padding:8px 6px;height:var(--bottom-nav-h);
+}
+.gds-bottomnav button{
+  flex:1;border:none;background:transparent;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  font-family:var(--font-body);font-weight:700;font-size:11px;color:var(--ink-400);
+  border-radius:var(--radius-md);transition:color var(--dur-fast);
+}
+.gds-bottomnav button[aria-current="page"]{color:var(--green-600);}
+.gds-bottomnav .ico{font-size:22px;line-height:1;}

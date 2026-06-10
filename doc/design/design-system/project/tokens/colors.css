@@ -1,0 +1,111 @@
+/* GorditOS — Color tokens
+   Vibe: "warm paper + growing garden". Cozy, optimistic, never clinical.
+   Base palette + semantic aliases. No harsh error reds (anti-pressure ethos):
+   the strongest negative is a soft clay used only for gentle attention. */
+
+:root {
+  /* ---- Warm neutrals (sand / paper / ink) ---- */
+  --sand-50:  #FDFAF4;
+  --sand-100: #FBF4E9;  /* app page background */
+  --sand-200: #F4EADB;
+  --sand-300: #E9DAC4;
+  --sand-400: #D6C2A4;
+  --sand-500: #BBA47F;
+
+  --paper:    #FFFDF9;  /* card / sheet surface */
+  --white:    #FFFFFF;
+
+  --ink-900: #2B2722;   /* primary text — warm near-black */
+  --ink-700: #4E473D;   /* strong secondary text */
+  --ink-500: #7C7264;   /* muted text / captions */
+  --ink-400: #9E9384;   /* placeholder / disabled text */
+  --ink-300: #C3B9A8;   /* hairline on sand */
+
+  /* ---- Primary — Verde (growth / leaf / the habit garden) ---- */
+  --green-50:  #E9F6EE;
+  --green-100: #CFEBDA;
+  --green-200: #A6DBBC;
+  --green-300: #79C99C;
+  --green-400: #4FB37E;
+  --green-500: #2F9E66;  /* PRIMARY */
+  --green-600: #248555;  /* hover */
+  --green-700: #1B6A43;  /* pressed / text-on-light */
+  --green-800: #134E32;
+
+  /* ---- Apricot — celebration / food / joy (secondary) ---- */
+  --apricot-50:  #FDF1E5;
+  --apricot-100: #FBE0C7;
+  --apricot-300: #F8C28C;
+  --apricot-500: #F2A24E;  /* SECONDARY */
+  --apricot-600: #E2872B;  /* hover */
+  --apricot-700: #BC6C1C;
+
+  /* ---- Sky — calma / sueño / hidratación (tertiary) ---- */
+  --sky-50:  #E7F3F8;
+  --sky-100: #C9E5EF;
+  --sky-300: #93CFE2;
+  --sky-500: #57B0CF;  /* TERTIARY */
+  --sky-600: #3A93B4;
+  --sky-700: #2A7191;
+
+  /* ---- Berry — accent for variety, badges, confetti (use sparingly) ---- */
+  --berry-100: #F7DBE5;
+  --berry-500: #D86A8E;
+  --berry-600: #C24E74;
+
+  /* ---- Clay — the ONLY "attention" hue. Soft, never alarming ---- */
+  --clay-100: #F8E2D4;
+  --clay-500: #E08A5D;
+  --clay-600: #C76E40;
+
+  /* ============================================================
+     SEMANTIC ALIASES — author against these, not raw scales.
+     ============================================================ */
+
+  /* Surfaces & background */
+  --bg-app:        var(--sand-100);
+  --bg-sunken:     var(--sand-200);
+  --surface-card:  var(--paper);
+  --surface-raised:var(--white);
+  --surface-soft:  var(--green-50);  /* tinted info panels */
+
+  /* Text */
+  --text-strong:   var(--ink-900);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--ink-500);
+  --text-disabled: var(--ink-400);
+  --text-on-brand: #FFFFFF;
+  --text-link:     var(--green-700);
+
+  /* Brand roles */
+  --brand-primary:    var(--green-500);
+  --brand-primary-hover: var(--green-600);
+  --brand-primary-press: var(--green-700);
+  --brand-secondary:  var(--apricot-500);
+  --brand-tertiary:   var(--sky-500);
+
+  /* Habit categories (the garden) */
+  --habit-agua:      var(--sky-500);
+  --habit-ejercicio: var(--apricot-500);
+  --habit-comida:    var(--green-500);
+  --habit-sueno:     var(--berry-500);
+  --habit-calma:     #8E86D6;  /* soft lavender */
+  --habit-pasos:     var(--clay-500);
+
+  /* Borders & lines */
+  --border-soft:   var(--sand-300);
+  --border-strong: var(--ink-300);
+  --border-brand:  var(--green-200);
+
+  /* Feedback (kept gentle) */
+  --feedback-success: var(--green-500);
+  --feedback-celebrate: var(--apricot-500);
+  --feedback-calm:    var(--sky-500);
+  --feedback-attention: var(--clay-500);
+
+  /* Garden states */
+  --garden-soil:   #C9B79A;  /* empty day — tierra, never a wilted plant */
+  --garden-sprout: var(--green-300);
+  --garden-grown:  var(--green-500);
+  --garden-bloom:  var(--apricot-500);
+}

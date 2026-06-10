@@ -1,0 +1,39 @@
+/* GorditOS — base element defaults (applied on top of tokens). */
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+  color: var(--text-body);
+  background: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-strong);
+  line-height: var(--lh-snug);
+  margin: 0;
+  font-weight: var(--fw-bold);
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+button { font-family: inherit; }
+
+a { color: var(--text-link); text-decoration: none; }
+
+::selection { background: var(--green-100); color: var(--ink-900); }
+
+/* The "OS" wordmark accent — mono, tracked-out, used on the logotype lockup */
+.gordi-os-accent {
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}

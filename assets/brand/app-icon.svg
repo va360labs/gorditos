@@ -1,0 +1,20 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GorditOS app icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37AE74"></stop>
+      <stop offset="1" stop-color="#2F9E66"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="118" fill="url(#bg)"></rect>
+  
+  <path d="M256 232 C256 196 256 184 256 168" stroke="#E9F6EE" stroke-width="16" stroke-linecap="round" fill="none"></path>
+  <path d="M256 196 C232 168 196 168 178 184 C196 216 236 216 256 196 Z" fill="#CFEBDA"></path>
+  <path d="M256 184 C280 156 316 156 334 172 C316 204 276 204 256 184 Z" fill="#A6DBBC"></path>
+  
+  <path d="M256 220 C338 220 376 280 376 320 C376 372 322 404 256 404 C190 404 136 372 136 320 C136 280 174 220 256 220 Z" fill="#FBF4E9"></path>
+  <ellipse cx="222" cy="320" rx="16" ry="20" fill="#2B2722"></ellipse>
+  <ellipse cx="290" cy="320" rx="16" ry="20" fill="#2B2722"></ellipse>
+  <ellipse cx="190" cy="342" rx="20" ry="13" fill="#F2A24E" opacity="0.7"></ellipse>
+  <ellipse cx="322" cy="342" rx="20" ry="13" fill="#F2A24E" opacity="0.7"></ellipse>
+  <path d="M228 352 C242 368 270 368 284 352" stroke="#2B2722" stroke-width="9" stroke-linecap="round" fill="none"></path>
+</svg>

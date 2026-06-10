@@ -1,0 +1,41 @@
+/* GorditOS — Typography tokens
+   Display: Baloo 2 (rounded, warm — Gordi's voice & headings)
+   UI/Body: Nunito (rounded humanist sans, excellent Spanish legibility)
+   Mono:    DM Mono (the "OS" / system labels, stats chips, kbd) */
+
+:root {
+  /* Families */
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body:    'Nunito', system-ui, sans-serif;
+  --font-mono:    'DM Mono', ui-monospace, 'SF Mono', monospace;
+
+  /* Weights */
+  --fw-regular: 400;  /* @kind font */
+  --fw-medium:  500;  /* @kind font */
+  --fw-semibold:600;  /* @kind font */
+  --fw-bold:    700;  /* @kind font */
+  --fw-extra:   800;  /* @kind font */
+
+  /* Type scale — mobile-first, generous. rem @16px base */
+  --text-display: 2.5rem;   /* 40px — onboarding hero, celebrations */
+  --text-h1:      2rem;     /* 32px — screen titles */
+  --text-h2:      1.5rem;   /* 24px — section titles */
+  --text-h3:      1.25rem;  /* 20px — card titles */
+  --text-lg:      1.125rem; /* 18px — lead / Gordi speech */
+  --text-base:    1rem;     /* 16px — body */
+  --text-sm:      0.875rem; /* 14px — secondary */
+  --text-xs:      0.75rem;  /* 12px — captions, labels */
+  --text-mono-sm: 0.8125rem;/* 13px — mono chips/labels */
+
+  /* Line heights */
+  --lh-tight:   1.1;   /* @kind font */
+  --lh-snug:    1.25;  /* @kind font */
+  --lh-normal:  1.5;   /* @kind font */
+  --lh-relaxed: 1.65;  /* @kind font */
+
+  /* Letter spacing */
+  --ls-tight:  -0.01em; /* @kind font */
+  --ls-normal: 0;       /* @kind font */
+  --ls-label:  0.04em;  /* @kind font */
+  --ls-wide:   0.12em;  /* @kind font */
+}

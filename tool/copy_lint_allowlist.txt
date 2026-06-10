@@ -1,0 +1,2 @@
+# copy-lint — excepciones (un fragmento por línea; si un string literal lo
+# contiene, no se reporta). Mantener al mínimo y justificar cada entrada.

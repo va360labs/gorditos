@@ -1,0 +1,7 @@
+{
+  "US": {"id": "lbl-us-blue", "name": "US", "color": "#3B82F6"},
+  "UC": {"id": "lbl-uc-green", "name": "UC", "color": "#22C55E"},
+  "AC": {"id": "lbl-ac-purple", "name": "AC", "color": "#A855F7"},
+  "Infra": {"id": "lbl-infra-yellow", "name": "Infra", "color": "#EAB308"},
+  "Bloqueado": {"id": "lbl-blocked-red", "name": "Bloqueado", "color": "#EF4444"}
+}

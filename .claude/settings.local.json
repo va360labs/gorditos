@@ -1,0 +1,20 @@
+{
+  "specbox": {
+    "backend_type": "freeform",
+    "freeform_root_absolute": "d:\\aa_projects\\gorditos\\doc\\tracking",
+    "project_name": "gorditos",
+    "autopilot": {
+      "level": "equilibrado",
+      "image_budget_eur_per_feature": 5,
+      "queue_enabled": false,
+      "auto_confirm_overrides": [],
+      "always_ask_overrides": []
+    },
+    "mcp_wired": "no",
+    "discovery": {
+      "gate_mode": "warn",
+      "pedagogical_mode": "auto"
+    },
+    "_note": "Proyecto inicializado 2026-06-10 en modo emulado-conversacional (MCP specbox-engine no cableado en la sesion). setup_board emulado escribiendo config.json + items.json + labels.json directamente. PRD fuente: docs/PRD-GorditOS.md."
+  }
+}

@@ -1,0 +1,225 @@
+[
+  {
+    "id": "US-01",
+    "type": "US",
+    "name": "Fundaciones (Sprint 0)",
+    "description": "Como equipo de producto, quiero una base Flutter+Supabase con RLS, auth y CI con guardas de producto (anti-peso, glosario), para construir todas las features del MVP sin deuda de seguridad ni de lenguaje.",
+    "state": "in_progress",
+    "labels": ["US", "Infra"],
+    "hours_estimated": 28,
+    "screens": ["Shell (5 tabs)", "Login", "Registro"],
+    "prd": "doc/prd/PRD_fundaciones_tracker_habitos.md",
+    "plan": "doc/plans/us-01_fundaciones_plan.md",
+    "stitch_designs": "MANUAL",
+    "design_source": "doc/design/design-system/",
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-001",
+    "type": "UC",
+    "us_id": "US-01",
+    "name": "Scaffold Flutter, navegación y theming",
+    "actor": "Equipo / Usuario final",
+    "state": "done",
+    "labels": ["UC"],
+    "hours_estimated": 8,
+    "screens": ["Shell con bottom tabs Hoy/Cocina/Muévete/Gordi/Mi jardín"],
+    "acs": [
+      {"id": "AC-01", "text": "La app compila y arranca en Android e iOS mostrando el shell con los 5 bottom tabs (Hoy, Cocina, Muévete, Gordi, Mi jardín); cada tab navega a su pantalla placeholder con el título correcto, verificado por widget test de navegación.", "status": "done"},
+      {"id": "AC-02", "text": "Los temas claro y oscuro están definidos como ThemeData centrales con tokens de la paleta (naranja melocotón, verde menta, crema) y radius alto; la app sigue el ajuste del sistema y un widget test verifica que ambos temas renderizan el shell sin overflow.", "status": "done"},
+      {"id": "AC-03", "text": "La estructura es feature-first (lib/core/, lib/features/<feature>/) y flutter analyze con flutter_lints devuelve 0 errores y 0 warnings.", "status": "done"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-002",
+    "type": "UC",
+    "us_id": "US-01",
+    "name": "Backend Supabase, profiles y RLS",
+    "actor": "Sistema",
+    "state": "review",
+    "note": "Migración+RLS+trigger+test SQL escritos y schema-guard en verde; AC-05 pendiente de ejecutar contra una base real (falta enlazar proyecto Supabase / instalar CLI).",
+    "labels": ["UC"],
+    "hours_estimated": 6,
+    "screens": [],
+    "acs": [
+      {"id": "AC-04", "text": "Una migración SQL versionada (supabase/migrations/) crea profiles (id FK a auth.users, display_name, avatar_config jsonb, preferences jsonb, created_at); ninguna migración contiene columnas del glosario corporal (weight/peso/height/altura/bmi/imc/body_fat/measurement) — verificado por script de CI que escanea supabase/migrations/** y falla listando archivo y línea si hay match.", "status": "done"},
+      {"id": "AC-05", "text": "RLS está habilitado en profiles con políticas select/insert/update restringidas a auth.uid() = id; un test de integración con 2 usuarios verifica que el usuario B obtiene 0 filas al consultar el profile de A y recibe error al intentar actualizarlo.", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-003",
+    "type": "UC",
+    "us_id": "US-01",
+    "name": "Autenticación y creación de perfil",
+    "actor": "Usuario final",
+    "state": "review",
+    "note": "Login/registro/guards/logout implementados (email) con modo demo sin credenciales. AC-06/AC-08 pendientes de verificación e2e contra Supabase real; AC-07 (Google/Apple) pendiente de cuentas de stores.",
+    "labels": ["UC"],
+    "hours_estimated": 10,
+    "screens": ["Login", "Registro"],
+    "acs": [
+      {"id": "AC-06", "text": "El registro y login con email+contraseña funcionan end-to-end; tras el primer login se crea automáticamente la fila en profiles (trigger sobre auth.users) y el usuario aterriza en la pantalla Hoy en menos de 3s tras autenticar.", "status": "pending"},
+      {"id": "AC-07", "text": "El login con Google (Android) y con Apple (iOS) funciona en build de desarrollo; en iOS el botón de Apple Sign-In se muestra siempre que se ofrezca cualquier login social (requisito App Store), verificado por widget test condicional por plataforma.", "status": "pending"},
+      {"id": "AC-08", "text": "Cerrar sesión limpia la sesión local: al reabrir la app se muestra el login y ninguna petición posterior reutiliza el token (test de integración que verifica 401/redirect tras logout).", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-004",
+    "type": "UC",
+    "us_id": "US-01",
+    "name": "CI con guardas de producto",
+    "actor": "Sistema (CI)",
+    "state": "review",
+    "note": "Workflow + copy-lint + schema-guard creados y verificados en local; falta el primer push a GitHub para verlos correr en CI.",
+    "labels": ["UC", "Infra"],
+    "hours_estimated": 4,
+    "screens": [],
+    "acs": [
+      {"id": "AC-09", "text": "Un workflow de CI ejecuta flutter analyze y flutter test en cada push/PR y el pipeline falla si hay cualquier issue de análisis o test roto.", "status": "done"},
+      {"id": "AC-10", "text": "El CI incluye un paso copy-lint que escanea los strings de UI (l10n/constantes de copy) contra la lista negra del glosario (peso, kilos, adelgazar, IMC, grasa, dieta, déficit, quemar calorías, has fallado, racha perdida, objetivo incumplido) y falla listando archivo y línea de cada match.", "status": "done"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "US-02",
+    "type": "US",
+    "name": "Tracker de hábitos (Sprint 1)",
+    "description": "Como usuario que empieza de cero, quiero registrar mis hábitos del día en un solo tap y ver mi constancia crecer como un jardín, para sentirme acompañado sin presión ni miedo a romper nada.",
+    "state": "user_stories",
+    "labels": ["US"],
+    "hours_estimated": 35,
+    "screens": ["Hoy", "Mi jardín", "Nuevo hábito (modal)", "Gestión de hábitos"],
+    "prd": "doc/prd/PRD_fundaciones_tracker_habitos.md",
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "US-03",
+    "type": "US",
+    "name": "Onboarding amable + release Android",
+    "description": "Como persona que empieza de cero, quiero un onboarding que me pregunte cómo quiero sentirme (nunca cuánto peso) y conocer a Gordi, para que la app se adapte a mí desde el primer día; y como equipo queremos el release Android firmado para subir a Play Store.",
+    "state": "review",
+    "note": "UC-009 y UC-010 done. En review hasta que el .aab esté subido a prueba interna en Play Console con política de privacidad publicada.",
+    "labels": ["US"],
+    "hours_estimated": 14,
+    "screens": ["Onboarding (9 pasos)", "Celebración final"],
+    "prd": "docs/PRD-GorditOS.md §4.1",
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-009",
+    "type": "UC",
+    "us_id": "US-03",
+    "name": "Flujo de onboarding amable",
+    "actor": "Usuario final",
+    "state": "done",
+    "labels": ["UC"],
+    "hours_estimated": 10,
+    "screens": ["Onboarding (9 pasos)"],
+    "acs": [
+      {"id": "AC-22", "text": "El onboarding pregunta exactamente el contexto del PRD §4.1 (cómo quieres sentirte en 3 meses, nivel de actividad, tiempo disponible, equipamiento, preferencias alimentarias, hora de motivación) y permite elegir a Gordi; en ningún paso se pide peso, altura, edad para cálculos ni fotos del cuerpo (verificable por inspección del flujo + copy-lint).", "status": "done"},
+      {"id": "AC-23", "text": "Las respuestas se persisten localmente (shared_preferences) y, si hay sesión Supabase, se vuelcan a profiles.preferences; al completar, el usuario aterriza en Hoy y el onboarding no vuelve a aparecer en arranques siguientes (widget test del flujo completo).", "status": "done"},
+      {"id": "AC-24", "text": "El disclaimer sanitario obligatorio (PRD §9.3) es visible dentro del onboarding (widget test).", "status": "done"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-010",
+    "type": "UC",
+    "us_id": "US-03",
+    "name": "Release Android firmado (Play Store ready)",
+    "actor": "Sistema (build)",
+    "state": "done",
+    "note": "app-release.aab 42.2MB firmado y verificado (jarsigner). La subida a Play Console + ficha + política de privacidad son del usuario: doc/release/play_store_checklist.md.",
+    "labels": ["UC", "Infra"],
+    "hours_estimated": 4,
+    "screens": [],
+    "acs": [
+      {"id": "AC-25", "text": "La app Android tiene label 'GorditOS', applicationId com.va360labs.gorditos, permiso INTERNET en el manifest principal e icono launcher derivado del app-icon del design system.", "status": "done"},
+      {"id": "AC-26", "text": "Existe configuración de firma de release con upload keystore (key.properties y .jks fuera de git) y `flutter build appbundle --release` produce un .aab firmado sin errores.", "status": "done"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-005",
+    "type": "UC",
+    "us_id": "US-02",
+    "name": "Modelo de datos de hábitos + seed",
+    "actor": "Sistema",
+    "state": "backlog",
+    "labels": ["UC"],
+    "hours_estimated": 5,
+    "screens": [],
+    "acs": [
+      {"id": "AC-11", "text": "Una migración crea habits (type water|steps|exercise|meal|sleep|calm|custom, name, icon, target_soft int null, active bool) y habit_logs (habit_id, user_id, date, completed, note null) con constraint UNIQUE(habit_id, date) y RLS user_id = auth.uid() en ambas; el test de aislamiento de 2 usuarios pasa en ambas tablas.", "status": "pending"},
+      {"id": "AC-12", "text": "Al crearse un profile se siembran automáticamente los 6 hábitos predefinidos (agua, pasos, ejercicio, comida casera, dormir, calma) activos; un test SQL verifica que tras el alta existen exactamente 6 hábitos con los tipos correctos.", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-006",
+    "type": "UC",
+    "us_id": "US-02",
+    "name": "Gestión de hábitos",
+    "actor": "Usuario final",
+    "state": "backlog",
+    "labels": ["UC"],
+    "hours_estimated": 8,
+    "screens": ["Gestión de hábitos", "Nuevo hábito (modal)"],
+    "acs": [
+      {"id": "AC-13", "text": "El usuario crea un hábito personalizado (nombre obligatorio 1-40 caracteres, icono elegido de un picker, tipo custom) y aparece en la lista de Hoy sin reiniciar la app (<1s, propagado vía estado Riverpod).", "status": "pending"},
+      {"id": "AC-14", "text": "El usuario puede renombrar y desactivar/reactivar cualquier hábito; un hábito desactivado desaparece de Hoy pero sus habit_logs históricos siguen contando en el jardín (test de integración).", "status": "pending"},
+      {"id": "AC-15", "text": "Eliminar un hábito personalizado requiere confirmación explícita y borra hábito y logs; los 6 hábitos predefinidos no muestran opción de eliminar, solo desactivar (widget test).", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-007",
+    "type": "UC",
+    "us_id": "US-02",
+    "name": "Pantalla Hoy — check en 1 tap",
+    "actor": "Usuario final",
+    "state": "backlog",
+    "labels": ["UC"],
+    "hours_estimated": 10,
+    "screens": ["Hoy"],
+    "acs": [
+      {"id": "AC-16", "text": "Marcar un hábito cuesta exactamente 1 tap desde Hoy; el tap hace upsert idempotente sobre habit_logs (apoyado en UNIQUE habit_id+date): un segundo tap desmarca y nunca se generan filas duplicadas, verificado por test de integración con doble tap rápido.", "status": "pending"},
+      {"id": "AC-17", "text": "Al completar un hábito se muestra una microcelebración (animación ≤1,5s); los hábitos pendientes se renderizan en estado neutro — sin color rojo, sin icono de advertencia, sin texto negativo (widget test que inspecciona el estado pendiente).", "status": "pending"},
+      {"id": "AC-18", "text": "La pantalla Hoy muestra los hábitos activos del día en <2s en 4G simulada con skeleton durante la carga, y con 0 hábitos activos muestra un estado vacío amable con ilustración de Gordi y CTA 'añade tu primer hábito'.", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  },
+  {
+    "id": "UC-008",
+    "type": "UC",
+    "us_id": "US-02",
+    "name": "Jardín de hábitos y constancia acumulativa",
+    "actor": "Usuario final",
+    "state": "backlog",
+    "labels": ["UC"],
+    "hours_estimated": 12,
+    "screens": ["Mi jardín"],
+    "acs": [
+      {"id": "AC-19", "text": "La RPC habit_garden_summary(period) (week|month) devuelve por día el nº de hábitos completados y el total de días activos del periodo; tests SQL cubren una semana con 3 días activos y un mes sin actividad (devuelve 0 sin error).", "status": "pending"},
+      {"id": "AC-20", "text": "Mi jardín renderiza por cada día activo una planta con 3 niveles según hábitos completados (brote=1, planta=2-3, flor=4+) y tierra neutra para días vacíos; no existe ningún asset ni estado visual marchito o rojo (widget test + inventario de assets).", "status": "pending"},
+      {"id": "AC-21", "text": "El jardín muestra los contadores 'Días activos este mes' y 'Tu mejor mes', acumulativos: añadir días vacíos al periodo nunca reduce su valor (unit test del cálculo con secuencia actividad→vacío).", "status": "pending"}
+    ],
+    "created_at": "2026-06-10T00:00:00+00:00",
+    "updated_at": "2026-06-10T00:00:00+00:00"
+  }
+]
