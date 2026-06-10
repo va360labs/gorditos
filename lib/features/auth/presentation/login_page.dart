@@ -76,12 +76,19 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               padding: const EdgeInsets.all(GordiSpacing.screenPad),
               children: [
                 Center(
+                  key: const Key('logo_gorditos'),
                   child: Image.asset(
                     'assets/brand/logo_completo.png',
-                    key: const Key('logo_gorditos'),
                     width: 320,
                     semanticLabel:
                         'Gorditos — Pequeños hábitos, grandes cambios',
+                    // Si el asset fallara en algún dispositivo, mostramos el
+                    // wordmark — nunca un hueco roto en la primera pantalla.
+                    errorBuilder: (context, _, _) => Text(
+                      'GorditOS',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.displayMedium,
+                    ),
                   ),
                 ),
                 const SizedBox(height: GordiSpacing.s8),

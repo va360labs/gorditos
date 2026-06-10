@@ -36,6 +36,9 @@ void main() {
         child: MaterialApp(theme: AppTheme.light, home: const LoginPage()),
       ),
     );
+    // Frame extra: en Flutter ≥3.44 la resolución del asset puede diferir
+    // la primera materialización del subárbol de la imagen.
+    await tester.pump();
     expect(find.byKey(const Key('logo_gorditos')), findsOneWidget);
     expect(
       find.textContaining('no sustituye el consejo de profesionales'),
