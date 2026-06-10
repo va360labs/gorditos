@@ -36,10 +36,7 @@ void main() {
         child: MaterialApp(theme: AppTheme.light, home: const LoginPage()),
       ),
     );
-    expect(
-      find.image(const AssetImage('assets/brand/logo_completo.png')),
-      findsOneWidget,
-    );
+    expect(find.byKey(const Key('logo_gorditos')), findsOneWidget);
     expect(
       find.textContaining('no sustituye el consejo de profesionales'),
       findsOneWidget,

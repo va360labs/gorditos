@@ -78,6 +78,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                 Center(
                   child: Image.asset(
                     'assets/brand/logo_completo.png',
+                    key: const Key('logo_gorditos'),
                     width: 320,
                     semanticLabel:
                         'Gorditos — Pequeños hábitos, grandes cambios',
